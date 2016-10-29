@@ -1,0 +1,58 @@
+% Aqui coloca-se os projentores tipo pai e filho(A) ou mãe e filho(A).
+% Sempre antes da virgula será o projenitor, após a virgula o filho(A).
+
+% Algoritimo para identificar a Irmã.
+irma(X,Y):-progenitor(A,X),progenitor(A,Y),X\==Y,sexo(X, feminino).
+
+%Identificar o Irmão.
+irmao(X,Y):-progenitor(A,X),progenitor(A,Y),X\==Y,sexo(X, masculino).
+
+% Identificar o Avô.
+vô(X,Y):-progenitor(X,A),progenitor(A,Y),sexo(X, masculino).
+
+%Identificar a Avó.
+vo(X,Y):-progenitor(X,A),progenitor(A,Y),sexo(X, feminino).
+
+% Identificar a mãe.
+mae(X,Y):-progenitor(X,Y),sexo(X ,feminino).
+
+% Identificar o Pai.
+pai(X,Y):-progenitor(X,Y),sexo(X, masculino).
+
+% Identificar o Tio.
+tio(X,Y):-irmao(X,A),progenitor(A,Y).
+
+% Identificar a Tia.
+tia(X,Y):-irma(X,A),progenitor(A,Y).
+
+progenitor(alcides, leci).
+progenitor(alcides, ledice).
+progenitor(celenita,leci).
+progenitor(celenita, ledice).
+progenitor(joao,daianne).
+progenitor(joão, jessica).
+progenitor(leci, daianne).
+progenitor(leci, jessica).
+progenitor(ledice,wandslan).
+progenitor(ledice, valquiria).
+progenitor(donizete, wandslan).
+progenitor(donizete, valquiria).
+progenitor(valquiria, wandslanSobrinho).
+progenitor(luiz, wandlsanSobrinho).
+
+
+% Definição de Sexo - Feminino
+sexo(celenita, feminino).
+sexo(leci, feminino).
+sexo(ledice, feminino).
+sexo(daianne, feminino).
+sexo(jessica, feminino).
+sexo(valquiria, feminino).
+
+% Definição de Sexo - Masculino.
+sexo(alcides, masculino).
+sexo(joao, masculino).
+sexo(donizete, masculino).
+sexo(wandslan, masculino).
+sexo(wandslanSobrinho, masculino).
+sexo(luiz, masculino).
